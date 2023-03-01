@@ -11,7 +11,7 @@ var numbers = '0123456789'
 
 
 var userSelection = [];
-let finalPassword = [];
+
 
 // Write password to the #password input
 function writePassword() {
@@ -32,7 +32,7 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
   let passLength = prompt(' Please choose length between 8 and 128'); 
-
+  
 
   let isNumb = /^\d+$/.test(passLength);
 
@@ -54,7 +54,7 @@ function generatePassword(){
   if(lowerChoice){
     userSelection.push(...lowerCharacters)
   }
-
+  let finalPassword = [];
   
   let specialChoice = confirm('Would you like special characters?')
   if(specialChoice){
