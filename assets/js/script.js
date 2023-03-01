@@ -10,7 +10,7 @@ var upperCharacters = lowerCharacters.toUpperCase();
 var numbers = '0123456789'
 
 
-var userSelection = [];
+
 
 
 // Write password to the #password input
@@ -31,6 +31,8 @@ generateBtn.addEventListener("click", writePassword);
 
 
 function generatePassword(){
+  var userSelection = [];
+
   let passLength = prompt(' Please choose length between 8 and 128'); 
   
 
@@ -43,24 +45,23 @@ function generatePassword(){
    
   }
  
-
+  
   let upperChoice = confirm('Would you like upper cases?')
   if(upperChoice){
     userSelection.push(...upperCharacters)
   }
-
+  
   
   let lowerChoice = confirm('Would you like lower cases?')
   if(lowerChoice){
     userSelection.push(...lowerCharacters)
   }
-  let finalPassword = [];
   
   let specialChoice = confirm('Would you like special characters?')
   if(specialChoice){
     userSelection.push(...specialCharacters)
   }
-
+  
   
   let numberChoice = confirm('Would you like numbers?')
   if(numberChoice){
@@ -68,22 +69,29 @@ function generatePassword(){
   }
   console.log('userSelection after: ', userSelection);
 
+  let finalPassword = [];
+
+ 
+  
+  if (numberChoice && specialChoice && lowerChoice && upperChoice && isNumb && passLength >= 8 || passLength <= 128){
+
+  
+     for (let i = 0; i < passLength; i++) {
+    finalPassword.push(userSelection[Math.floor(Math.random() * userSelection.length)]);
+    
+}}
   // 4 negative options-prevents user from continuing thru any more prompts
   if (!numberChoice && !specialChoice && !lowerChoice && !upperChoice) {
     userSelection = alert("You must select at least one option in order to generate your password. Please try again by starting over. Click Generate Password button to begin again.");
     
-}else {
-
-//Random selection
-  for (let i = 0; i < passLength; i++) {
-    finalPassword.push(userSelection[Math.floor(Math.random() * userSelection.length)]);
+    return false;
 
   }
   
   return finalPassword; 
 }
 
-}
+
 
 
  
